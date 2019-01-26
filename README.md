@@ -1,1 +1,3 @@
 # DiplomaInAIProject
+
+## Predictive assistant 
