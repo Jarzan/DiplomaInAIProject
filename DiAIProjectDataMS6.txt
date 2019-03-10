@@ -1,0 +1,49 @@
+
+Ei näköjään mene nopeudet logeihin. 
+Bio sludge mixing status on bio sludge mixing tankin mixerin moottorin status. Eli 0 = stop, 20 fw ja -5 fail.
+Levelit on kaikki 0…100%
+Main chamber ja sec chamber on chamberien lämpötilat degC
+Paneelin listaus? HMI paneelin numeroa tai muuta tietoa panelista ei taida logeista nähdä.
+
+Panelilla näkyvät käyntiajat on tunteina.
+ 
+Moottorit (Börger, Haarslev, Bio sludge mixer)
+20 Forward
+15 Backward
+0 Stop
+-5 Fault or Overcurrent
+ 
+Burner
+20 = On
+0 = Off
+-20 = Flame fail
+ 
+Dryer motor current
+0 – 100%
+ 
+Incin underpressure 1/10mbar
+Eli tuo 20 olisi ilmeisesti 2.0mbar
+ 
+Three way valve
+10 Open
+5 Close
+-5 Alarm
+ 
+Lower gate  (Close ja open saattaa olla ristissä)
+10 Open
+0 Liikkuu
+-10 Closed
+ 
+Medical flap (Closed ja Open saattaa olla ristissä)
+0 Closed
+-5 Open
+5 Nappia painettu (Napin painallus, tuskin toimii)
+ 
+Flue gas opacity
+0 – 100%
+ 
+Exhaust gas fan 1/10Hz
+Eli 60 = 6Hz
+Aivan omituinen skaalaus tuossa, ja tuo kusee jos moottori on jotain muuta kuin 50Hz.
+ 
+Jos tuo aika ei vastaa todellisuutta, niin panelin päivämäärä / aika on väärässä.
