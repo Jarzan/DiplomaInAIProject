@@ -1,0 +1,69 @@
+
+Applying data science and machine learning tools in development of a tool for sustainable waste management onboard cruise ship
+
+ Abstract
+ Background
+
+In this work, a data product will be produced by using data science tools and machine learning (ML) algorithms that would help a cruise ship operator to plan the future waste management operations by a most sustainable and feasible way. The project work is done by constructing the ML-product by using real shipboard operational data and external web sources. The purpose is to create ML-system that would give a decent picture and prediction of the best option for the operations.
+
+There are two aspects in this work: Sustainability and feasibility. Evac Oy supplies integrated cleantech solutions, including e.g. waste management systems, to all types of ships. The sustainability is the key value for all major cruise ship owners. Not only because of regulations and guidelines, but because of acceptability of the cruise business as a whole. The sustainability part will be done as a prediction by using mass balance of recyclable materials and carbon balance derived from the balance. In addition to sustainability, the operations should preferably be as economical as possible. This part would be covered by market price data of recyclable materials as well as the carbon price.
+
+The most important sales argument of the systems will be in the future both sustainability and feasibility of the operations. To give idea about the significance of these issues, for 10 000 person cruise ship, the annual price tag in 2021 for avoided CO2-emissions from waste activities could be 180 000 USD and the lower level of cash flow from recycling of waste materials could be 1.5 million USD.
+
+Goal and risks
+
+The goal is to study how to extract usable data from the existing sources, clean and explore the data so that a usable predictive ML models could be produced and trained with new and fresh data in the future from the IoT-system. If this goal is achieved, it may be worth of considering to apply and further develop the extent of the work to an usable data science product. The aim of the project work is to produce a data product that would help a cruise ship owner/operator to operate the ship most sustainable and feasible manner and also plan the future waste management operations. 
+
+The IoT-system that would be used for the purpose is installed and connected to our recent new-build cruise ship project. The risk is that the availability of the data may delay. In that case, we need to somehow "construct" the data based on our best knowledge. Part of the data is parsed from the web. The other risk is that the data cannot be parsed and cleaned properly due to complexity into a usable form. Third risk here may be that the available relevant data may not be sufficient for training of the constructed ML model.
+
+Target organisation
+
+The customer of the product will be managers of the fleet operations of the cruise ship owner company. Sustainability is the key criteria for the persons making the decisions on environmental operations on behalf of the ships.
+
+Data perspective and development of machine learning model
+
+There are both internal and external data sources here that would be used from the user point of view. The internal data source would be a dry and wet waste production data. That would be derived on a daily basis from the ship IoT-system in form of CSV-files. One CSV file for the dry waste production and one for the wet waste production. The external data would be historical trends of market values of recycled materials and value of carbon in terms of greenhouse gas emission abatement.
+
+The ML-model would be recommendation system that would predict what to do with the shipboard-generated waste in the future cruises. The output features should be most relevant classes to define what is “sustainable and “feasible”. The feasibility is simpler as it basically boils down to total cost of operations. Thereby, the indicator-features for the feasibility would be kgs-oil consumed to burn kgs-waste, the ports where it would be cost-effective in the future to dispose certain recyclable waste fraction and the cash flow as €/$ from avoided CO2-emissions. In terms of sustainability the defining output features would be total CO2-emissions from the activities and other output would be decision whether or not burn the waste and are the wet waste pumped into the sea. The model should be able to predict, based on significance of each feature is the operation sustainable or not.
+
+The information for sustainability would come e.g. as a limit of CO2-emissions or the amount of waste entering the material recovery. The limit of value of meter or label may not be that definite. For feasibility could come from price development of different recyclable materials from different waste market price sources. Mainly from the web pages of waste management companies managing the waste from the individual ports. The recommendation whether to burn or recycle can be predicted based on overall costs and cash flows.
+
+The significance of the input features in terms of defining sustainability of the operations is challenging. I can see analogy between a getting a disease and unhealthy actions against environment expressed as unsustainable operation. There is a high risk of constructing a biased ML-model. Therefore, high level of domain-understanding is needed to make a readjustment feedback loop for the learning model. Probably, the most relevant input features for the sustainability would be:
+	•	CO2-emissions from different activities
+	•	Amount of incinerated waste
+	•	Level of recycling the material to the reprocessing for repurpose. Special significance in the plastics. The prevention of littering of the seas by plastics has internationally high priority.
+	•	Dumping the wet waste into the sea.
+
+The input features in terms of defining feasibility of the operations is easier and more unambiguous as it is all about the overall cost of the activity. The break-point of feasibility needs to be defined. The most relevant input features for the feasibility would be:
+	•	Value/cost of CO2-emissions
+	•	Oil consumption
+	•	Cash flow from recycled material
+
+The raw data set consists of two types of data; One that is produced continuously that will be the input data for the model. These continuous data sources are:
+	•	volume as cubic meters (m3) of dry waste produced continuously onboard cruise ship into a dry waste silo. This data is directly converted to kilograms (kg) of dry waste. Produced as CSV-files on a daily basis.
+	•	volume as cubic meters (m3) of food waste produced continuously onboard cruise ship into a food waste silo. This data is directly converted to kilograms (kg) of food waste. Produced as CSV-files on a daily basis.
+	•	volume as cubic meters (m3) of waste fed continuously into waste burning unit (incinerator). This data is directly converted to kilograms (kg) of waste. Produced as CSV-files on a daily basis.
+	•	diesel oil consumption produced continuously onboard cruise ship as kgs from the flow rate and run times of the diesel oil pumps. Produced as CSV-files on a daily basis.
+	•	Market price of carbon dioxide emission allowance as € for CO2-tons e.g. from this source: https://www.eex.com/en/market-data/environmental-markets/spot-market/european-emission-allowances#!/. This value will be retrieved from the site API daily.
+	•	The market price for various recycled materials. These are fixed values, but for the training the algorithms, these could be artificially varied within certain limits with Monte Carlo-method. The original price values may be scraped from the web as JSON/XML.
+
+The CSV-files and the emission allowance price will be loaded to a common SQL table of the on a daily basis. PostgreSQL will be used as program for the RDBMS.
+
+In addition, there is known historical plus some fixed values used for calculations:
+	•	Proportion of materials recycled. This could later on be a fresh online data as CSV, if the materials are recovered by a sorting robot.
+	•	CO2-production from the burning of the waste. This is mean %-concentration from the mass balance calculations.
+	•	Emission limits for e.g. CO2 and waterborne emissions. These would be mainly gained from UN IMO guidelines.
+	•	Price of consumer diesel oil. A single value.
+
+The main focus of the project would still be on a ML-model defining the sustainability.
+
+Computational infrastructure, software product considerations and privacy
+
+The work is done with Jupyter Lab of Anaconda distribution package. The code will be written in Python meaning that all the usable Python libraries, like Pandas, Matplotlib, Scikit-learn, Seaborn, will be utilized. The project work is done on my MacBook Pro on Condo virtual environment.
+
+As I have only basic level of programming knowledge, there is no guarantees that the work will be finalized as data product to be utilised by end-customer. The primary goal of the work is to learn the methods of data science and machine learning. If I get to the production stage with this work, the GUI would be developed PyQt-GUI-tool. As there is lot of real time data available, it would be preferable to have it running real time. For the employer company point of view, a software product would be the desired option. However, most of the efforts during these studies should be put to data management and the ML-model building.
+
+The ML-model that is guiding the operator towards sustainable operations has to be transparent. The model should not be a black box and thereby a reasoning by human keeping in the loop is very important whilst training the model. After all, the performance in terms of sustainable operations should be evaluated by humans. A computer is best tool for computing and human is best for reasoning of the model.
+
+As long as there is no connection between a specific ship or the ship owner, there should not be any privacy issues. The model should basically be a tool for evaluating sustainability of human actions towards the nature. Combining the GPS and the route information would solve the issue. However, that extends the scope of the work beyond what is reasonable for this project work.
+
